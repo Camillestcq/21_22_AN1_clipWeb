@@ -1,5 +1,6 @@
-let audioPath = "./assets/audio/GoWithYou.mp4";
+let audioPath = "./assets/audio/Niko Rubio - Go With You.webm";
 let sequencer;
+let teapot;
 
 let drawFlowerFlag = false;
 let drawFlowerFlagOld = false;
@@ -15,6 +16,11 @@ let isCameraSpinAround = false;
 let isCameraBounceUpAndDown = false;
 let isCameraforward = false
 
+
+function preload() {
+   teapot = loadModel('assets/img/RomainLeBossMerci.obj', true);
+}
+
 function setup() {	
 	colorMode(RGB);
 	
@@ -25,23 +31,45 @@ function setup() {
 	mainCamera.lookAt(0,0,0);
 	
 
+			particules.push( new Particule (0,0,0) ) ;
 	sequencer = new Sequencer(audioPath, 132);
 	
 	sequencer.registerSequence({
 		name : "all",
+		start:1,
+		stop:2,
 		onStart : (event) => {
 			console.log(event)
+
 		},
 		onStep : (event) => {
 			console.log(event)
 			particules.push( new Particule (0,0,0) ) ;
+			
 		},
 		onStop : (event) => {
 			console.log(event)
 		},
 		
 	});
+	sequencer.registerSequence({
+		name : "xxx",
+		start:2,
+		stop:20,
+		onStart : (event) => {
+			console.log(event)
 
+		},
+		onStep : (event) => {
+			console.log(event)
+			particules.push( new Particule (0,0,0) ) ;
+			
+		},
+		onStop : (event) => {
+			console.log(event)
+		},
+		
+	});
 
 	sequencer.registerSequence({
 		name : "first",
@@ -226,8 +254,8 @@ sequencer.registerSequence({
 
 			sequencer.registerSequence({
 		name : "sept",
-		start:144, 
-		stop:146,
+		start:142, 
+		stop:144,
 		onStart : (event) => {
 			console.log(event)
 			isCameraSpinAround = true ;
@@ -246,7 +274,7 @@ sequencer.registerSequence({
 
 			sequencer.registerSequence({
 		name : "29",
-		start:147, 
+		start:144, 
 		stop:156,
 		onStart : (event) => {
 			console.log(event)
@@ -266,8 +294,8 @@ sequencer.registerSequence({
 
 			sequencer.registerSequence({
 		name : "huit",
-		start:154, 
-		stop:158,
+		start:152, 
+		stop:156,
 		onStart : (event) => {
 			console.log(event)
 			isCameraSpinAround = true ;
@@ -286,7 +314,7 @@ sequencer.registerSequence({
 
 			sequencer.registerSequence({
 		name : "22",
-		start:159, 
+		start:157, 
 		stop:212,
 		onStart : (event) => {
 			console.log(event)
@@ -307,8 +335,8 @@ sequencer.registerSequence({
 
 sequencer.registerSequence({
 		name : "neuf",
-		start:230, 
-		stop:232,
+		start:228, 
+		stop:230,
 		onStart : (event) => {
 			console.log(event)
 			isCameraSpinAround = true ;
@@ -327,7 +355,7 @@ sequencer.registerSequence({
 
 sequencer.registerSequence({
 		name : "23",
-		start:233, 
+		start:231, 
 		stop:235,
 		onStart : (event) => {
 			console.log(event)
@@ -345,30 +373,11 @@ sequencer.registerSequence({
 		
 	});
 
-		sequencer.registerSequence({
-	name : "dix",
-	start:235, 
-	stop:237,
-	onStart : (event) => {
-		console.log(event)
-		isCameraSpinAround = true ;
-
-	},
-	onStep : (event) => {
-		console.log(event)
-		particules.push( new Particule (0,0,0) ) ;
-	},
-	onStop : (event) => {
-		console.log(event)
-		isCameraSpinAround = false;
-	},
-	
-});
 
 sequencer.registerSequence({
 		name : "onze",
-		start:249, 
-		stop:251,
+		start:248, 
+		stop:250,
 		onStart : (event) => {
 			console.log(event)
 			isCameraSpinAround = true ;
@@ -387,8 +396,8 @@ sequencer.registerSequence({
 
 sequencer.registerSequence({
 		name : "24",
-		start:252, 
-		stop:278,
+		start:251, 
+		stop:267,
 		onStart : (event) => {
 			console.log(event)
 			isCameraTurnAround = true ;
@@ -405,11 +414,30 @@ sequencer.registerSequence({
 		
 	});
 
+sequencer.registerSequence({
+	name : "dix",
+	start:268, 
+	stop:270,
+	onStart : (event) => {
+		console.log(event)
+		isCameraTurnLeft = true ;
+
+	},
+	onStep : (event) => {
+		console.log(event)
+		particules.push( new Particule (0,0,0) ) ;
+	},
+	onStop : (event) => {
+		console.log(event)
+		isCameraTurnLeft = false ;
+	},
+	});
+
 
 sequencer.registerSequence({
 		name : "douze",
-		start:279, 
-		stop: 281,
+		start:277, 
+		stop: 279,
 		onStart : (event) => {
 			console.log(event)
 			isCameraSpinAround = true ;
@@ -428,8 +456,8 @@ sequencer.registerSequence({
 
 sequencer.registerSequence({
 		name : "30",
-		start:282, 
-		stop:287,
+		start:280, 
+		stop:286,
 		onStart : (event) => {
 			console.log(event)
 			isCameraTurnLeft = true ;
@@ -448,8 +476,8 @@ sequencer.registerSequence({
 
 sequencer.registerSequence({
 		name : "treize",
-		start:288, 
-		stop:290,
+		start:287, 
+		stop:289,
 		onStart : (event) => {
 			console.log(event)
 			isCameraSpinAround = true ;
@@ -468,8 +496,8 @@ sequencer.registerSequence({
 
 sequencer.registerSequence({
 		name : "quatorze",
-		start:308, 
-		stop:310,
+		start:307, 
+		stop:309,
 		onStart : (event) => {
 			console.log(event)
 			isCameraSpinAround = true ;
@@ -488,7 +516,7 @@ sequencer.registerSequence({
 
 sequencer.registerSequence({
 		name : "25",
-		start:311, 
+		start:310, 
 		stop:324,
 		onStart : (event) => {
 			console.log(event)
@@ -548,8 +576,8 @@ sequencer.registerSequence({
 
 sequencer.registerSequence({
 		name : "seize",
-		start:336, 
-		stop:338,
+		start:333, 
+		stop:335,
 		onStart : (event) => {
 			console.log(event)
 			isCameraSpinAround = true ;
@@ -568,7 +596,7 @@ sequencer.registerSequence({
 
 sequencer.registerSequence({
 		name : "32",
-		start:339, 
+		start:336, 
 		stop:344,
 		onStart : (event) => {
 			console.log(event)
@@ -668,8 +696,8 @@ sequencer.registerSequence({
 
 sequencer.registerSequence({
 		name : "dixneuf",
-		start:366, 
-		stop:368,
+		start:364, 
+		stop:366,
 		onStart : (event) => {
 			console.log(event)
 			isCameraSpinAround = true ;
@@ -705,10 +733,10 @@ sequencer.registerSequence({
 		
 	});
 
-	}
+	
 sequencer.registerSequence({
 		name : "26",
-		start:36, 
+		start:367, 
 		stop:400,
 		onStart : (event) => {
 			console.log(event)
@@ -725,12 +753,17 @@ sequencer.registerSequence({
 		},
 		
 	});
-
+	
+}
 
 
 function draw(){
 
- background(random(225), 225, random(225));
+ background(0);
+ ambientLight(255);
+ directionalLight(250, 0, 0, -1, 1, -1);
+
+		sequencer.update();
  if(isCameraTurnAround){
 	let R = 800;
 	let x = R * cos(millis()/1000);
@@ -739,7 +772,6 @@ function draw(){
 	mainCamera.lookAt(0, 0, 0);
 	}
 
-		sequencer.update();
  if(isCameraStraight){
 	let R = 800;
 	let x = R/4 * cos(millis()/100);
@@ -748,7 +780,7 @@ function draw(){
 	mainCamera.lookAt(0, 0, 0);
 	}
 		
-			sequencer.update();
+			
  if(isCameraTurnLeft){
 	let R = 800;
 	let x = R * cos(millis()/100);
@@ -757,7 +789,7 @@ function draw(){
 	mainCamera.lookAt(5, 0, 5);
 	}
 	
-			sequencer.update();
+			
  if(isCameraRight){
 	let R = 800;
 	let x = R/4 * cos(millis()/100);
@@ -766,7 +798,7 @@ function draw(){
 	mainCamera.lookAt(0, 0, 0);
 	}
 		
-			sequencer.update();
+			
  if(isCameraSpinAround){
 	let R = 800;
 	let x = tan(millis()/100);
